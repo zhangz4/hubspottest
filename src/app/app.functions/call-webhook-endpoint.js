@@ -6,7 +6,7 @@ exports.main = async (context = {}) => {
   
   try {
     await callWebhookEndpoint(saleslotId);
-    return { status: 'success', meesage:"SalesLot Copy Workflow initiated successfully." };
+    return { status: 'success', meesage:"SalesLot Copy Workflow initiated sucXXXXXcessfully." };
   } catch (err) {
     return { status: 'error', message: err.message }
   }
