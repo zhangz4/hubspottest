@@ -31,11 +31,22 @@ const Extension = ({ context, runServerless, sendAlert }) => {
     const message = response.status ? response.meesage : "error";
     sendAlert({ title:"TestTitle", message: message,type:"danger" });
   };
-    const companiesResponse = axios.get(`https://api.hubapi.com/crm/v4/objects/deal/21786397288/associations/companies`, {
+
+    const dealResponse = axios.get(`https://api.hubapi.com/crm/v3/objects/deals/21786397288?properties=dealstage&archived=false`, {
       headers: {
         'Authorization': `Bearer pat-na1-569412b9-6f27-4496-a664-511f9d940ee4`
       }
     });
+  
+      let dealstage = dealResponse.data.properties.dealstage;
+
+      if (dealstage === null) {
+          dealstage = "null";
+      }
+
+      console.log(JSON.stringify(dealResponse.data));
+      console.log(dealstage);
+  
   return (
     <>
     <Flex
